@@ -6,7 +6,7 @@ const faker = require('@faker-js/faker');
 //any port works/ 8000 and 5000 are the common ones obviously 
 const port = 2222;
 
-
+//creating classes to call in the routes
 class User {
     constructor(){
         this._id=faker.datatype.uuid();
@@ -35,11 +35,13 @@ class Company{
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+
+//creates a new company using the class constructor above
 app.get("/api/users/new", (req, res)=>{
     let newUser = new User()
     res.json({result:newUser})
 })
-
+//creates new user using same method
 app.get("/api/company/new", (req, res)=>{
     let newCompany = new Company()
     res.json({result:newCompany})
